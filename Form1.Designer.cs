@@ -218,6 +218,7 @@
             btnEkleGuncelle.TabIndex = 4;
             btnEkleGuncelle.Text = "Ekle/Güncelle";
             btnEkleGuncelle.UseVisualStyleBackColor = false;
+            btnEkleGuncelle.Click += btnEkleGuncelle_Click;
             // 
             // btnSil
             // 
