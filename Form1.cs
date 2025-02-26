@@ -1,13 +1,18 @@
 
+using System.ComponentModel;
+
 namespace PersonelApp
 {
     public partial class Form1 : Form
     {
-        List<Personel> liste = new(); //Personeller için liste tanýmladýk
+        BindingList<Personel> liste = new(); //Personeller için liste tanýmladýk
 
         public Form1()
         {
             InitializeComponent();
+            //ListBox ile baðlantý yap
+            lbPersoneller.DataSource = liste;
+            lbPersoneller.DisplayMember = "Ad";
         }
 
         private void btnEkleGuncelle_Click(object sender, EventArgs e)
