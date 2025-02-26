@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            btnKaydet = new Button();
             label1 = new Label();
             panel2 = new Panel();
             lbPersoneller = new ListBox();
@@ -49,7 +50,6 @@
             btnSil = new Button();
             btnYeni = new Button();
             pbYeni = new PictureBox();
-            btnKaydet = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -77,6 +77,19 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            // 
+            // btnKaydet
+            // 
+            btnKaydet.BackColor = Color.SteelBlue;
+            btnKaydet.Font = new Font("Segoe UI", 14F);
+            btnKaydet.ForeColor = Color.White;
+            btnKaydet.Location = new Point(555, 4);
+            btnKaydet.Name = "btnKaydet";
+            btnKaydet.Size = new Size(89, 42);
+            btnKaydet.TabIndex = 4;
+            btnKaydet.Text = "Kaydet";
+            btnKaydet.UseVisualStyleBackColor = false;
+            btnKaydet.Click += btnKaydet_Click;
             // 
             // label1
             // 
@@ -234,6 +247,7 @@
             btnSil.TabIndex = 4;
             btnSil.Text = "Sil";
             btnSil.UseVisualStyleBackColor = false;
+            btnSil.Click += btnSil_Click;
             // 
             // btnYeni
             // 
@@ -258,19 +272,6 @@
             pbYeni.SizeMode = PictureBoxSizeMode.StretchImage;
             pbYeni.TabIndex = 5;
             pbYeni.TabStop = false;
-            // 
-            // btnKaydet
-            // 
-            btnKaydet.BackColor = Color.SteelBlue;
-            btnKaydet.Font = new Font("Segoe UI", 14F);
-            btnKaydet.ForeColor = Color.White;
-            btnKaydet.Location = new Point(555, 4);
-            btnKaydet.Name = "btnKaydet";
-            btnKaydet.Size = new Size(89, 42);
-            btnKaydet.TabIndex = 4;
-            btnKaydet.Text = "Kaydet";
-            btnKaydet.UseVisualStyleBackColor = false;
-            btnKaydet.Click += btnKaydet_Click;
             // 
             // Form1
             // 

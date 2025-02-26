@@ -14,12 +14,12 @@ namespace PersonelApp
             InitializeComponent();
 
             //Verileri dosyadan oku
-            if(File.Exists("bilgiler.txt"))//dosya var mý?
+            if (File.Exists("bilgiler.txt"))//dosya var mý?
             {
                 string metin = File.ReadAllText("bilgiler.txt");
 
                 var okunanListe = JsonSerializer.Deserialize<List<Personel>>(metin);
-                liste = new (okunanListe);//okunan listeyi binding liste koy
+                liste = new(okunanListe);//okunan listeyi binding liste koy
             }
 
             //ListBox ile baðlantý yap
@@ -77,6 +77,14 @@ namespace PersonelApp
             else
             {
                 gosterilenPersonel = null;
+                //alanlarý temizle
+                txtAd.Clear();
+                txtSoyad.Clear();
+                txtYas.Clear();
+                txtTel.Clear();
+                txtAdres.Clear();
+                //ilk kontrole TtxtAd odaklan
+                txtAd.Focus();
                 pbYeni.Visible = true;//bu yeni personel
             }
         }
@@ -95,6 +103,7 @@ namespace PersonelApp
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
+
             //Seçili personeli kaldýr, yani yeni personel ekleyeceðim
             lbPersoneller.SelectedIndex = -1;
             //alanlarý temizle
@@ -114,6 +123,23 @@ namespace PersonelApp
             File.WriteAllText("bilgiler.txt", metin);
 
             MessageBox.Show("Bilgiler kayýt edildi!");
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (gosterilenPersonel == null)
+                return; //biþey yapmadan çýk
+
+            DialogResult cevap = MessageBox.Show(
+                gosterilenPersonel.AdSoyad + " isimli personeli silmek istediðinize emin misiniz?", 
+                "Uyarý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if(cevap == DialogResult.Yes)
+            {
+                liste.Remove(gosterilenPersonel);
+
+                lbPersoneller.SelectedIndex = -1;
+            }
         }
     }
 }
