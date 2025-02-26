@@ -49,6 +49,7 @@
             btnSil = new Button();
             btnYeni = new Button();
             pbYeni = new PictureBox();
+            btnKaydet = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(btnKaydet);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -257,6 +259,19 @@
             pbYeni.TabIndex = 5;
             pbYeni.TabStop = false;
             // 
+            // btnKaydet
+            // 
+            btnKaydet.BackColor = Color.SteelBlue;
+            btnKaydet.Font = new Font("Segoe UI", 14F);
+            btnKaydet.ForeColor = Color.White;
+            btnKaydet.Location = new Point(555, 4);
+            btnKaydet.Name = "btnKaydet";
+            btnKaydet.Size = new Size(89, 42);
+            btnKaydet.TabIndex = 4;
+            btnKaydet.Text = "Kaydet";
+            btnKaydet.UseVisualStyleBackColor = false;
+            btnKaydet.Click += btnKaydet_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -312,5 +327,6 @@
         private Button btnSil;
         private Button btnYeni;
         private PictureBox pbYeni;
+        private Button btnKaydet;
     }
 }

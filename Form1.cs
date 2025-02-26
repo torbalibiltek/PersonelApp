@@ -1,5 +1,6 @@
 
 using System.ComponentModel;
+using System.Text.Json;
 
 namespace PersonelApp
 {
@@ -11,6 +12,15 @@ namespace PersonelApp
         public Form1()
         {
             InitializeComponent();
+
+            //Verileri dosyadan oku
+            if(File.Exists("bilgiler.txt"))//dosya var mý?
+            {
+                string metin = File.ReadAllText("bilgiler.txt");
+
+                var okunanListe = JsonSerializer.Deserialize<List<Personel>>(metin);
+                liste = new (okunanListe);//okunan listeyi binding liste koy
+            }
 
             //ListBox ile baðlantý yap
             lbPersoneller.DataSource = liste;
@@ -95,6 +105,15 @@ namespace PersonelApp
             txtAdres.Clear();
             //ilk kontrole TtxtAd odaklan
             txtAd.Focus();
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            string metin = JsonSerializer.Serialize(liste);
+
+            File.WriteAllText("bilgiler.txt", metin);
+
+            MessageBox.Show("Bilgiler kayýt edildi!");
         }
     }
 }
