@@ -29,5 +29,10 @@ namespace PersonelApp
                 }
             }
         }
+    
+        public string AdSoyad//Readonly property
+        {
+            get { return Ad + " " + Soyad; }
+        }
     }
 }
