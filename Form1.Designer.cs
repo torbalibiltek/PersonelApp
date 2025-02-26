@@ -244,6 +244,7 @@
             btnYeni.TabIndex = 4;
             btnYeni.Text = "Yeni";
             btnYeni.UseVisualStyleBackColor = false;
+            btnYeni.Click += btnYeni_Click;
             // 
             // pbYeni
             // 

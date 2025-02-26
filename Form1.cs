@@ -19,7 +19,10 @@ namespace PersonelApp
 
         private void btnEkleGuncelle_Click(object sender, EventArgs e)
         {
-            YeniEkle();
+            if (gosterilenPersonel == null)//gösterilen Personel Yok ise
+                YeniEkle();
+            else
+                Guncelle();
         }
 
         void YeniEkle()
@@ -49,7 +52,7 @@ namespace PersonelApp
             //Bana listedeki seçili olan elemaný Personel olarak ver
             Personel pers = lbPersoneller.SelectedItem as Personel;
 
-            if(pers != null)//eðer veri geldiyse
+            if (pers != null)//eðer veri geldiyse
             {
                 //Personeli göster
                 txtAd.Text = pers.Ad;
@@ -59,8 +62,39 @@ namespace PersonelApp
                 txtAdres.Text = pers.Adres;
 
                 gosterilenPersonel = pers;
+                pbYeni.Visible = false;//yeni personel deðil bu
             }
+            else
+            {
+                gosterilenPersonel = null;
+                pbYeni.Visible = true;//bu yeni personel
+            }
+        }
 
+        void Guncelle()
+        {
+            gosterilenPersonel.Ad = txtAd.Text;
+            gosterilenPersonel.Soyad = txtSoyad.Text;
+            gosterilenPersonel.Yas = Convert.ToInt32(txtYas.Text);
+            gosterilenPersonel.Tel = txtTel.Text;
+            gosterilenPersonel.Adres = txtAdres.Text;
+
+            //Listeyi yenile
+            liste.ResetBindings();
+        }
+
+        private void btnYeni_Click(object sender, EventArgs e)
+        {
+            //Seçili personeli kaldýr, yani yeni personel ekleyeceðim
+            lbPersoneller.SelectedIndex = -1;
+            //alanlarý temizle
+            txtAd.Clear();
+            txtSoyad.Clear();
+            txtYas.Clear();
+            txtTel.Clear();
+            txtAdres.Clear();
+            //ilk kontrole TtxtAd odaklan
+            txtAd.Focus();
         }
     }
 }
